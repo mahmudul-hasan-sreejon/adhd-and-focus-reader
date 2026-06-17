@@ -3,6 +3,8 @@
 A reading & attention-support extension for Chromium browsers, built on
 [WXT](https://wxt.dev) + React + TypeScript.
 
+Repository: [mahmudul-hasan-sreejon/adhd-and-focus-reader](https://github.com/mahmudul-hasan-sreejon/adhd-and-focus-reader)
+
 This repo is a **working foundation**, not the finished product. The core
 reading engine runs; the cloud integrations and the full QA/release loop are
 scoped out below as the next milestones.
@@ -27,6 +29,10 @@ scoped out below as the next milestones.
 `OpenDyslexic-Regular.woff2`, `OpenDyslexic-Bold.woff2`, `Lexend-Regular.woff2`,
 `Lexend-Bold.woff2`, `Atkinson-Regular.woff2`, `Atkinson-Bold.woff2`.
 (Lexend & Atkinson also bundle into the popup via `@fontsource/*`.)
+
+**Icons** ship in `public/icon/` (`icon-16/32/48/96/128.png`, referenced from
+`wxt.config.ts`). `public/icon/icon.svg` is the editable source — see
+`public/icon/README.md` to regenerate the PNGs.
 
 ## Run it
 
