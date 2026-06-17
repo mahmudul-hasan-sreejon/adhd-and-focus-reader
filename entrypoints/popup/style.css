@@ -1,0 +1,55 @@
+:root {
+  --pop-bg: #fbfbfd;
+  --pop-fg: #1c1c1f;
+  --pop-muted: #6b6b73;
+  --pop-accent: #4060c0;
+  --pop-border: #e3e3e8;
+  --pop-on: #e7edff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pop-bg: #1b1b1f; --pop-fg: #e8e8ea; --pop-muted: #9a9aa2;
+    --pop-accent: #7aa2f7; --pop-border: #303036; --pop-on: #2a3354;
+  }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+.afr-pop {
+  width: 320px;
+  font: 14px/1.45 system-ui, sans-serif;
+  background: var(--pop-bg);
+  color: var(--pop-fg);
+  padding: 14px 16px 18px;
+}
+.afr-pop-head h1 { font-size: 15px; margin: 0 0 10px; letter-spacing: .2px; }
+
+.afr-section { border-top: 1px solid var(--pop-border); padding-top: 10px; margin-top: 10px; }
+.afr-section h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--pop-muted); margin: 0 0 8px; }
+
+.afr-toggle, .afr-range { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 5px 0; }
+.afr-toggle span { display: flex; align-items: center; gap: 8px; }
+kbd { font: 10px monospace; background: var(--pop-border); padding: 1px 5px; border-radius: 4px; color: var(--pop-muted); }
+
+.afr-range input[type=range] { flex: 1; max-width: 150px; accent-color: var(--pop-accent); }
+
+.afr-seg { padding: 5px 0; }
+.afr-seg-label { display: block; color: var(--pop-muted); margin-bottom: 5px; font-size: 12px; }
+.afr-seg-buttons { display: flex; gap: 4px; }
+.afr-seg-buttons button, .afr-row button {
+  flex: 1; padding: 6px 4px; font-size: 12px; cursor: pointer;
+  background: transparent; color: var(--pop-fg);
+  border: 1px solid var(--pop-border); border-radius: 7px;
+  transition: background .12s ease, border-color .12s ease;
+}
+.afr-seg-buttons button.on { background: var(--pop-on); border-color: var(--pop-accent); font-weight: 600; }
+.afr-row { display: flex; gap: 6px; padding: 6px 0; }
+
+button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--pop-accent); outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
