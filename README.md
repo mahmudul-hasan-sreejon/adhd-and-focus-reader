@@ -63,7 +63,7 @@ lib/
     dom.ts           idempotent text-node walker, style injection, MutationObserver
   features/
     reader.ts        Mozilla Readability overlay (lossless toggle)
-    typography.ts    fonts + themes + chunking + line-length (one CSS sheet)
+    typography.ts    fonts + themes + chunking + line-length (one CSS sheet); themes paint the whole page, not just <html>/<body>
     bionic.ts        reversible leading-fixation bolding
     wordcolor.ts     reversible per-word hue rotation (6 colour-theme palettes; wins over page theme via inline !important)
     autopace.ts      rAF smooth auto-scroll (window or reader overlay), pauses on user input
@@ -78,6 +78,13 @@ lib/
   observer, but `data-afr-processed-*` guards make re-runs cheap no-ops.
 - *Content script is framework-free* for startup speed; React lives only in the
   popup.
+- *Comfort themes apply page-wide, not just to reader mode.* Sites set their own
+  `background-color` on inner containers, so theming only `<html>`/`<body>`
+  leaves those panels untouched. The theme pushes the comfort background onto
+  every element except media (`img`/`video`/`canvas`/`svg`/`picture`/`iframe`),
+  so background-images — logos, sprites — still paint on top. The `--afr-*`
+  vars stay on `<html>` so the reader overlay keeps inheriting them. Trade-off:
+  brand-coloured buttons/badges flatten to the comfort background.
 
 ## Handoff to Claude Code (milestones 6–10)
 

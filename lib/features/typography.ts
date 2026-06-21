@@ -66,14 +66,22 @@ export function applyTypography(s: Settings): void {
   // font files on pages that don't need them).
   if (s.font !== 'system') parts.push(fontFaces());
 
-  // Theme is scoped to <html> so it cascades but stays overridable per-feature.
+  // Theme: paint the whole page, not just <html>/<body>. Most sites set their
+  // own background-color on inner containers (panels, content wrappers), so
+  // theming only the root leaves those areas in their original colour and the
+  // page still looks untouched. We push the comfort background onto every
+  // element except media — background-images still paint on top, so logos and
+  // sprites survive — and recolour text page-wide. The --afr-* vars live on
+  // <html> so the reader overlay keeps inheriting them.
   const tv = themeVars(s.theme);
   if (tv) {
     parts.push(`html{${tv}}`);
     parts.push(
       `html, body { background-color: var(--afr-bg) !important; color: var(--afr-fg) !important; }`,
-      `p, li, span, h1, h2, h3, h4, h5, h6, article, section { color: var(--afr-fg) !important; }`,
-      `a { color: var(--afr-link) !important; }`,
+      `body *:not(img):not(video):not(canvas):not(svg):not(picture):not(iframe) { background-color: var(--afr-bg) !important; }`,
+      `body * { color: var(--afr-fg) !important; }`,
+      // Higher specificity + later declaration than `body *`, so links win.
+      `body a, body a * { color: var(--afr-link) !important; }`,
     );
   }
 
