@@ -9,8 +9,18 @@ const STYLE_ID = 'afr-style';
 
 // @font-face declarations pointing at web_accessible font files, so the chosen
 // reading font renders on any page (drop the files into public/fonts/).
+type FontFile =
+  | 'OpenDyslexic-Regular.woff2'
+  | 'OpenDyslexic-Bold.woff2'
+  | 'Lexend-Regular.woff2'
+  | 'Lexend-Bold.woff2'
+  | 'Atkinson-Regular.woff2'
+  | 'Atkinson-Bold.woff2';
+
 function fontFaces(): string {
-  const url = (p: string) => browser.runtime.getURL(`/fonts/${p}` as `/${string}`);
+  // Typing `p` to the exact filenames makes `/fonts/${p}` a member of WXT's
+  // generated PublicPath union, so getURL type-checks without a cast.
+  const url = (p: FontFile) => browser.runtime.getURL(`/fonts/${p}`);
   return `
     @font-face{font-family:"OpenDyslexic";src:url("${url('OpenDyslexic-Regular.woff2')}") format("woff2");font-weight:400;font-display:swap;}
     @font-face{font-family:"OpenDyslexic";src:url("${url('OpenDyslexic-Bold.woff2')}") format("woff2");font-weight:700;font-display:swap;}
