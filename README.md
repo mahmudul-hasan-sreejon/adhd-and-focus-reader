@@ -17,7 +17,7 @@ scoped out below as the next milestones.
 | 2 | Reader mode + DOM handling | ✅ Readability overlay, MutationObserver-safe |
 | 3 | Typography (fonts, scale, line-height) | ✅ CSS engine + `@font-face` injection, fonts bundled¹ |
 | 4 | Focus (bionic, chunking, autopace) | ✅ implemented, reversible |
-| 5 | Comfort themes (sepia/dark/low-contrast) + word colour | ✅ done |
+| 5 | Comfort themes (sepia/dark/low-contrast) + word colour (6 selectable palettes) | ✅ done |
 | 6 | Saved library + universal search | ◑ local IndexedDB store + search work; UI pending |
 | 7 | Notion / Obsidian integrations | ◻ typed adapters stubbed (need OAuth/transport) |
 | 8 | Performance optimisation | ◻ baseline only |
@@ -64,7 +64,7 @@ lib/
     reader.ts        Mozilla Readability overlay (lossless toggle)
     typography.ts    fonts + themes + chunking + line-length (one CSS sheet)
     bionic.ts        reversible leading-fixation bolding
-    wordcolor.ts     reversible per-word hue rotation
+    wordcolor.ts     reversible per-word hue rotation (6 colour-theme palettes; wins over page theme via inline !important)
     autopace.ts      rAF smooth auto-scroll (window or reader overlay), pauses on user input
   integrations/
     index.ts         NoteTarget interface + working LocalLibrary + Notion/Obsidian stubs

@@ -7,6 +7,7 @@ import {
   type ReadingFont,
   type Theme,
   type ChunkLevel,
+  type WordColorTheme,
 } from '@/lib/core/settings';
 
 const FONTS: { value: ReadingFont; label: string }[] = [
@@ -26,6 +27,14 @@ const CHUNKS: { value: ChunkLevel; label: string }[] = [
   { value: 'light', label: 'Light' },
   { value: 'medium', label: 'Medium' },
   { value: 'heavy', label: 'Heavy' },
+];
+const WORD_COLOR_THEMES: { value: WordColorTheme; label: string }[] = [
+  { value: 'calm', label: 'Calm' },
+  { value: 'vivid', label: 'Vivid' },
+  { value: 'warm', label: 'Warm' },
+  { value: 'cool', label: 'Cool' },
+  { value: 'forest', label: 'Forest' },
+  { value: 'candy', label: 'Candy' },
 ];
 
 function sendToActiveTab(type: string) {
@@ -84,6 +93,12 @@ export default function App() {
         <Range label="Size" min={0.8} max={1.6} step={0.05} value={s.fontScale} onChange={(v) => set({ fontScale: v })} />
         <Range label="Line height" min={1.2} max={2.2} step={0.1} value={s.lineHeight} onChange={(v) => set({ lineHeight: v })} />
         <Toggle label="Word colour" checked={s.wordColor} onChange={(v) => set({ wordColor: v })} />
+        {s.wordColor && (
+          <SegMent
+            label="Colour theme" options={WORD_COLOR_THEMES} value={s.wordColorTheme}
+            onChange={(v) => set({ wordColorTheme: v })}
+          />
+        )}
       </Section>
 
       <Section title="Comfort">

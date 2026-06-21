@@ -17,6 +17,14 @@ export type Theme = 'off' | 'sepia' | 'dark' | 'low-contrast';
 
 export type ChunkLevel = 'off' | 'light' | 'medium' | 'heavy';
 
+export type WordColorTheme =
+  | 'calm'
+  | 'vivid'
+  | 'warm'
+  | 'cool'
+  | 'forest'
+  | 'candy';
+
 export interface Settings {
   readerMode: boolean;
 
@@ -38,6 +46,7 @@ export interface Settings {
   theme: Theme;
   wordColor: boolean;
   wordColorIntensity: number; // 0–1
+  wordColorTheme: WordColorTheme;
 
   reduceMotion: boolean;
 }
@@ -55,6 +64,7 @@ export const DEFAULT_SETTINGS: Settings = {
   theme: 'off',
   wordColor: false,
   wordColorIntensity: 0.5,
+  wordColorTheme: 'calm',
   reduceMotion: false,
 };
 

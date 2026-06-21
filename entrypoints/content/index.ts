@@ -27,7 +27,7 @@ export default defineContentScript({
       removeBionic(root);
       removeWordColor(root);
       if (s.bionic) applyBionic(root, s.bionicIntensity);
-      if (s.wordColor) applyWordColor(root);
+      if (s.wordColor) applyWordColor(root, s.wordColorTheme);
     };
 
     const reconcile = (s: Settings) => {
@@ -51,7 +51,7 @@ export default defineContentScript({
         stopObserving = observeMutations(() => {
           const r = (getReaderRoot() as ParentNode | null) ?? document.body;
           if (current.bionic) applyBionic(r, current.bionicIntensity);
-          if (current.wordColor) applyWordColor(r);
+          if (current.wordColor) applyWordColor(r, current.wordColorTheme);
         });
       }
     };
