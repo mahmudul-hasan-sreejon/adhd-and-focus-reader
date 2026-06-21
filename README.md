@@ -27,9 +27,10 @@ scoped out below as the next milestones.
 ¹ **Fonts are bundled.** The six OFL-licensed `.woff2` files ship in
 `public/fonts/` — `OpenDyslexic-Regular.woff2`, `OpenDyslexic-Bold.woff2`,
 `Lexend-Regular.woff2`, `Lexend-Bold.woff2`, `Atkinson-Regular.woff2`,
-`Atkinson-Bold.woff2` (Regular/Bold only; filenames are referenced verbatim by
-`lib/features/typography.ts`). Lexend & Atkinson also bundle into the popup via
-`@fontsource/*`.
+`Atkinson-Bold.woff2` (Regular/Bold only; filenames are enumerated in the
+`FontFile` union in `lib/features/typography.ts`, which keeps `getURL` paths
+type-safe against WXT's generated `PublicPath`). Lexend & Atkinson also bundle
+into the popup via `@fontsource/*`.
 
 **Icons** ship in `public/icon/` (`icon-16/32/48/96/128.png`, referenced from
 `wxt.config.ts`). `public/icon/icon.svg` is the editable source — see
