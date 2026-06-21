@@ -15,7 +15,7 @@ scoped out below as the next milestones.
 |----------|-----------|-------|
 | 1 | WXT project + architecture | ✅ done |
 | 2 | Reader mode + DOM handling | ✅ Readability overlay, MutationObserver-safe |
-| 3 | Typography (fonts, scale, line-height) | ✅ CSS engine + `@font-face` injection¹ |
+| 3 | Typography (fonts, scale, line-height) | ✅ CSS engine + `@font-face` injection, fonts bundled¹ |
 | 4 | Focus (bionic, chunking, autopace) | ✅ implemented, reversible |
 | 5 | Comfort themes (sepia/dark/low-contrast) + word colour | ✅ done |
 | 6 | Saved library + universal search | ◑ local IndexedDB store + search work; UI pending |
@@ -24,11 +24,12 @@ scoped out below as the next milestones.
 | 9 | Accessibility polish | ◑ popup is keyboard/AT-friendly; audit pending |
 | 10 | Release + cross-browser QA | ◻ agentic — see handoff below |
 
-¹ **Fonts need files.** Drop these into `public/fonts/` (filenames matter, see
-`lib/features/typography.ts`):
-`OpenDyslexic-Regular.woff2`, `OpenDyslexic-Bold.woff2`, `Lexend-Regular.woff2`,
-`Lexend-Bold.woff2`, `Atkinson-Regular.woff2`, `Atkinson-Bold.woff2`.
-(Lexend & Atkinson also bundle into the popup via `@fontsource/*`.)
+¹ **Fonts are bundled.** The six OFL-licensed `.woff2` files ship in
+`public/fonts/` — `OpenDyslexic-Regular.woff2`, `OpenDyslexic-Bold.woff2`,
+`Lexend-Regular.woff2`, `Lexend-Bold.woff2`, `Atkinson-Regular.woff2`,
+`Atkinson-Bold.woff2` (Regular/Bold only; filenames are referenced verbatim by
+`lib/features/typography.ts`). Lexend & Atkinson also bundle into the popup via
+`@fontsource/*`.
 
 **Icons** ship in `public/icon/` (`icon-16/32/48/96/128.png`, referenced from
 `wxt.config.ts`). `public/icon/icon.svg` is the editable source — see
