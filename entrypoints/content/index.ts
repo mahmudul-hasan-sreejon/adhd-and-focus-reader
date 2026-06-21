@@ -17,7 +17,9 @@ export default defineContentScript({
   runAt: 'document_idle',
   main() {
     let current: Settings;
-    const autopace = createAutopace(60);
+    // When reader mode is active the page scrolls inside the overlay, not the
+    // window, so autopace drives that element instead.
+    const autopace = createAutopace(60, () => getReaderRoot());
     let stopObserving: (() => void) | null = null;
 
     // Re-run the DOM-level passes (bionic / wordcolor) over a given root.

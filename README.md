@@ -65,7 +65,7 @@ lib/
     typography.ts    fonts + themes + chunking + line-length (one CSS sheet)
     bionic.ts        reversible leading-fixation bolding
     wordcolor.ts     reversible per-word hue rotation
-    autopace.ts      rAF smooth auto-scroll, pauses on user input
+    autopace.ts      rAF smooth auto-scroll (window or reader overlay), pauses on user input
   integrations/
     index.ts         NoteTarget interface + working LocalLibrary + Notion/Obsidian stubs
 ```
